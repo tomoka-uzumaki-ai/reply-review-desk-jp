@@ -1,1 +1,11 @@
-function checkCase(d){if(!d||typeof d!=='object'||Array.isArray(d))throw Error('オブジェクトのJSONが必要です');for(const k of ['title','ask','rule','why','handoff'])if(typeof d[k]!=='string'||!d[k].trim()||d[k].length>2000)throw Error(k+'の空欄・長さを確認');if(!Array.isArray(d.facts)||d.facts.length<1||d.facts.length>10||d.facts.some(x=>typeof x!=='string'||!x.trim()||x.length>1000))throw Error('事実は1〜10件、各1000字まで');if(!Array.isArray(d.options)||d.options.length!==3||d.options.some(x=>typeof x!=='string'||!x.trim()||x.length>1000))throw Error('3つの対応案が必要');if(!Number.isInteger(d.correct)||d.correct<0||d.correct>2)throw Error('正解は1〜3の案を選択');return {title:d.title,ask:d.ask,facts:d.facts,rule:d.rule,options:d.options,correct:d.correct,why:d.why,handoff:d.handoff}}if(typeof module!=='undefined')module.exports={checkCase};
+function checkCase(d){
+ const allowed=['title','ask','facts','rule','options','correct','why','handoff'];
+ if(!d||typeof d!=='object'||Array.isArray(d)||Object.keys(d).length!==allowed.length||Object.keys(d).some(k=>!allowed.includes(k)))throw Error('このツールの8項目だけを持つケースJSONが必要です');
+ for(const k of ['title','ask','rule','why','handoff'])if(typeof d[k]!=='string'||!d[k].trim()||d[k].length>2000)throw Error(k+'の空欄・長さを確認');
+ if(!Array.isArray(d.facts)||d.facts.length<1||d.facts.length>10||d.facts.some(x=>typeof x!=='string'||!x.trim()||x.length>1000))throw Error('事実は1〜10件、各1000字まで');
+ if(!Array.isArray(d.options)||d.options.length!==3||d.options.some(x=>typeof x!=='string'||!x.trim()||x.length>1000))throw Error('3つの対応案が必要');
+ if(!Number.isInteger(d.correct)||d.correct<0||d.correct>2)throw Error('正解は1〜3の案を選択');
+ return {title:d.title,ask:d.ask,facts:[...d.facts],rule:d.rule,options:[...d.options],correct:d.correct,why:d.why,handoff:d.handoff};
+}
+function readCaseJSON(text){if(typeof text!=='string'||new TextEncoder().encode(text).length>32768)throw Error('ケースJSONは32KBまでです');return checkCase(JSON.parse(text));}
+if(typeof module!=='undefined')module.exports={checkCase,readCaseJSON};
