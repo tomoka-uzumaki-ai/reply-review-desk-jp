@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tomoka-uzumaki-ai.github.io/reply-review-desk-jp/sitemap.xml
