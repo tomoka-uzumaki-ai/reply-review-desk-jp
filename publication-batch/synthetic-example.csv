@@ -1,0 +1,8 @@
+﻿"record_type","id","parent_id","title","ai_provenance","rights_note","files","offer_type","period","work_ids","platform","price","currency","release_status"
+"work","WORK-001","","Morning garden illustration","human","Created and owned by the example maker; not a legal assessment.","[""garden-print.png"",""garden-preview.jpg""]","","","","","","",""
+"work","WORK-002","","Evening garden illustration","assisted","Example maker records an AI assisted workflow; confirm actual license separately.","[""evening-print.png""]","","","","","","",""
+"work","WORK-003","","Cloud study","unknown","Source and license need review.","[]","","","","","","",""
+"offer","OFFER-001","","Garden print","","","","single","","[""WORK-001""]","","","","released"
+"variant","VAR-001","OFFER-001","Morning garden — printable illustration","","","[""garden-print.png"",""garden-preview.jpg""]","","","","Store A (example)","4","USD",""
+"offer","OFFER-002","","October garden collection","","","","monthly","2026-10","[""WORK-001"",""WORK-002""]","","","","draft"
+"variant","VAR-002","OFFER-002","October: two garden illustrations","","","[""garden-print.png"",""evening-print.png""]","","","","Store B (example)","6","USD",""

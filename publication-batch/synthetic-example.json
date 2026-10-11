@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "version": "0.1.0",
+  "works": [
+    {
+      "id": "WORK-001",
+      "title": "Morning garden illustration",
+      "ai": "human",
+      "rights": "Created and owned by the example maker; not a legal assessment.",
+      "files": [
+        "garden-print.png",
+        "garden-preview.jpg"
+      ]
+    },
+    {
+      "id": "WORK-002",
+      "title": "Evening garden illustration",
+      "ai": "assisted",
+      "rights": "Example maker records an AI assisted workflow; confirm actual license separately.",
+      "files": [
+        "evening-print.png"
+      ]
+    },
+    {
+      "id": "WORK-003",
+      "title": "Cloud study",
+      "ai": "unknown",
+      "rights": "Source and license need review.",
+      "files": []
+    }
+  ],
+  "offers": [
+    {
+      "id": "OFFER-001",
+      "title": "Garden print",
+      "type": "single",
+      "period": "",
+      "status": "released",
+      "workIds": [
+        "WORK-001"
+      ],
+      "variants": [
+        {
+          "id": "VAR-001",
+          "platform": "Store A (example)",
+          "title": "Morning garden — printable illustration",
+          "price": "4",
+          "currency": "USD",
+          "files": [
+            "garden-print.png",
+            "garden-preview.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OFFER-002",
+      "title": "October garden collection",
+      "type": "monthly",
+      "period": "2026-10",
+      "status": "draft",
+      "workIds": [
+        "WORK-001",
+        "WORK-002"
+      ],
+      "variants": [
+        {
+          "id": "VAR-002",
+          "platform": "Store B (example)",
+          "title": "October: two garden illustrations",
+          "price": "6",
+          "currency": "USD",
+          "files": [
+            "garden-print.png",
+            "evening-print.png"
+          ]
+        }
+      ]
+    }
+  ]
+}

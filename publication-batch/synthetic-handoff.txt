@@ -1,0 +1,42 @@
+PUBLICATION BATCH DESK 0.1.0
+MANUAL PUBLICATION HANDOFF — NOT PLATFORM APPROVAL
+
+Recorded filenames only. This export contains no artwork bytes, no upload, and no legal clearance.
+Compare the actual files, current destination rules, currency support, fees and content disclosures before publishing.
+No publication, payment, audience response or revenue is verified.
+
+OFFER OFFER-001 | Garden print
+Type: single | Period: not monthly | Recorded status: released
+Assigned work IDs: WORK-001
+  WORK-001 | Morning garden illustration | AI: human | Ownership/license note: Created and owned by the example maker; not a legal assessment.
+DESTINATION VAR-001 | Store A (example)
+Product title: Morning garden — printable illustration
+Price: 4 USD
+Filename manifest:
+  [ ] garden-print.png — locate and inspect actual file bytes
+  [ ] garden-preview.jpg — locate and inspect actual file bytes
+  [ ] Confirm current destination rules and actual AI disclosure
+  [ ] Confirm price, currency, fees and manual product fields
+  [ ] Explain any previously released/overlapping content
+  [ ] Preview actual customer delivery before manual publication
+
+OFFER OFFER-002 | October garden collection
+Type: monthly | Period: 2026-10 | Recorded status: draft
+Assigned work IDs: WORK-001, WORK-002
+  WORK-001 | Morning garden illustration | AI: human | Ownership/license note: Created and owned by the example maker; not a legal assessment.
+  WORK-002 | Evening garden illustration | AI: assisted | Ownership/license note: Example maker records an AI assisted workflow; confirm actual license separately.
+DESTINATION VAR-002 | Store B (example)
+Product title: October: two garden illustrations
+Price: 6 USD
+Filename manifest:
+  [ ] garden-print.png — locate and inspect actual file bytes
+  [ ] evening-print.png — locate and inspect actual file bytes
+  [ ] Confirm current destination rules and actual AI disclosure
+  [ ] Confirm price, currency, fees and manual product fields
+  [ ] Explain any previously released/overlapping content
+  [ ] Preview actual customer delivery before manual publication
+
+BATCH CHECKS
+[REVIEW] UNKNOWN_AI / WORK-003: AI provenance is unknown or unrecognized. Record the actual workflow.
+[BLOCK] WORK_FILES / WORK-003: No filenames are recorded for this work.
+[REVIEW] CONTENT_OVERLAP / WORK-001: Known overlap in OFFER-001 (single, released) and OFFER-002 (monthly, draft). Explain reused content before offering it twice.
