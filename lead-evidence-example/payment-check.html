@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Commission payment tracker: deposit, refund and remaining balance</title>
+<meta name="description" content="Check one creative commission's deposit, refund and remaining agreed amount. Free browser tool; blank amounts stay unknown. Take away a plain-text note.">
+<link rel="canonical" href="https://tomoka-uzumaki-ai.github.io/reply-review-desk-jp/lead-evidence-example/payment-check.html">
+<link rel="stylesheet" href="../continuity-example/style.css"><link rel="stylesheet" href="trial.css"><script src="payment-check.js" defer></script></head><body>
+<header><p class="eyebrow">FOR FREELANCERS &amp; CREATIVE COMMISSIONS</p><h1>A deposit is not<br>a fully paid commission.</h1><p>Check what has actually been received, what was refunded, and what remains under your confirmed agreement. Keep an unknown amount unknown.</p><nav><a href="#check-form">Check one commission</a><a href="./">See a complete fictional trail</a></nav></header>
+<main><section><h2>One order. One currency.</h2><p>Use totals from your own checked records. Leave a missing figure blank; use 0 only when you have confirmed none. No customer name, bank details or documents are needed. This page does not connect to a payment provider.</p>
+<form id="check-form"><div class="grid"><label>Currency<select name="currency"><option>USD</option><option>JPY</option><option>EUR</option><option>GBP</option></select></label>
+<label>Agreed amount<input name="agreed" inputmode="decimal" placeholder="Example: 400" maxlength="12"></label>
+<label>Total actually received<input name="received" inputmode="decimal" placeholder="Example: 300" maxlength="12"></label>
+<label>Total refunded<input name="refund" inputmode="decimal" placeholder="Example: 25, or 0 if checked" maxlength="12"></label></div>
+<p><label class="agreement"><input type="checkbox" name="confirmed"> I have confirmed the agreement; this is not just an unaccepted quote.</label></p>
+<div class="actions"><button type="submit">Check my entered amounts</button><button type="button" id="download" class="secondary" disabled>Download this note</button></div></form>
+<noscript>JavaScript is required for this free check. The worked example below is readable without it.</noscript>
+<pre id="result" role="status" aria-live="polite">No amounts have been checked yet.</pre>
+<p class="notice">Inputs stay in this tab. Nothing is sent, stored or verified against a bank. Download your note before leaving. Known cash is not profit: fees, tax, costs and exchange rates are not included.</p>
+</section><section><h2>A worked example you can verify</h2><p>A confirmed USD 400 agreement, USD 300 received and USD 25 refunded gives USD 275 known net cash and USD 125 still remaining under that agreement. If you do not know whether a refund occurred, leave it blank: the tool does not silently turn that gap into zero.</p><p>If refunds exceed receipts in the entered records, the note calls for review. That can mean missing earlier receipts or a different period; it does not prove fraud or create an automatic collection instruction.</p></section>
+<section><h2>When one note is enough, stop here.</h2><p>This free tool handles one manually entered total. A spreadsheet or this note may be all you need.</p><p>If you manage several inquiries, competing record versions, open tasks and order-by-order receipts, <strong>Lead Evidence Desk · US$6</strong> is an optional local workspace. It maps structured CSV columns, keeps evidence references and conflicting versions, and exports a restorable history.</p>
+<p><a href="https://jikkenlog.gumroad.com/l/lead-evidence-desk" rel="noopener">See the full workspace, files and current checkout price</a></p>
+<p>Paid workspace requirements: Python 3 and desktop Chrome on macOS; verified startup is via localhost. English/Japanese interface. No AI extraction, messaging, bank connection or tax filing. The free note is not an import file for the paid workspace. You can compare the <a href="./">full fictional example</a> before buying. Same paid product on itch.io and Gumroad; do not buy twice. Taxes and currency conversion are shown at checkout.</p>
+</section><footer><a href="../seller-desk/">Other digital-selling jobs</a> · AI-assisted production. No actual customer results or earnings are presented.</footer></main></body></html>
+

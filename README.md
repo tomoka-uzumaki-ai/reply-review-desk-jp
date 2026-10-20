@@ -27,3 +27,11 @@
 AIを用いて制作した自作の架空教材です。取得者・購入者と同じ組織内の学習・研修に利用できます。教材そのものの再配布・転売・公開アップロードは許可していません。[無料版の利用条件](https://tomoka-uzumaki-ai.github.io/reply-review-desk-jp/LICENSE.txt)も確認できます。
 
 実際の顧客への判断には、その注文の購入時条件・売場のルール・担当者の権限を別途確認してください。この教材は実務能力や返金権利を認定しません。紙のカード、AIチャット、自動返信、実顧客の記録、メール送信、個別サポートは含みません。
+
+
+## Try a single creator task before choosing a workspace
+
+- [Two-shot character brief](https://tomoka-uzumaki-ai.github.io/reply-review-desk-jp/continuity-example/two-shot-brief.html): keep identity and intended changes separate; export a free TXT handoff. No image generation or automated identity check.
+- [Commission payment check](https://tomoka-uzumaki-ai.github.io/reply-review-desk-jp/lead-evidence-example/payment-check.html): one agreement, one currency, known receipts and refunds; missing amounts stay unknown. Download a note, not proof of payment or profit.
+
+These free browser tools need no installation and do not upload inputs. They are not the paid workspaces and their TXT notes are not import files. The full Continuity/Lead tools retain their documented Python 3 + desktop Chrome/macOS localhost requirements, prices and files.
