@@ -1,6 +1,6 @@
 'use strict';
 const D=window.BatchDesk;
-let batch=D.normalize(D.example()),dirty=false;
+let batch=D.normalize(D.example()),dirty=false,restoreEpoch=0;
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const lines=v=>v.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
@@ -18,7 +18,7 @@ function render(){
   refresh();
 }
 function refresh(){const issues=D.check(batch);$('counts').textContent=issues.filter(i=>i.level==='block').length+' missing / '+issues.filter(i=>i.level==='review').length+' review';$('issues').innerHTML=issues.length?issues.map(i=>`<div class="issue ${i.level}"><strong>${esc(i.level.toUpperCase())} · ${esc(i.scope)} · ${esc(i.code)}</strong><div>${esc(i.message)}</div></div>`).join(''):'<p>No recorded-data issues found. You still need to inspect actual files and destination conditions.</p>';$('preview').textContent=D.handoff(batch);}
-function commit(edit){try{const candidate=D.mutate(batch,edit);batch=candidate;dirty=true;status('Unsaved changes. Download JSON to keep this batch.');refresh();return true;}catch(error){status(error.message);return false;}}
+function commit(edit){try{const candidate=D.mutate(batch,edit);batch=candidate;restoreEpoch++;dirty=true;status('Unsaved changes. Download JSON to keep this batch.');refresh();return true;}catch(error){status(error.message);return false;}}
 function findObject(state,kind,id){if(kind==='work')return state.works.find(w=>w.id===id);if(kind==='offer')return state.offers.find(o=>o.id===id);return state.offers.flatMap(o=>o.variants).find(v=>v.id===id);}
 document.addEventListener('input',e=>{const t=e.target;if(!t.dataset.kind||t.dataset.kind==='assignment')return;const old=findObject(batch,t.dataset.kind,t.dataset.id);if(!old)return;
   const value=t.dataset.key==='files'?lines(t.value):t.value;
@@ -42,8 +42,8 @@ function download(name,contents,type){const url=URL.createObjectURL(new Blob([co
 $('save').onclick=()=>{try{download('publication-batch.json',D.toJSON(batch),'application/json');dirty=false;status('JSON download requested. Check that the file was saved; restoring it recreates this batch.');}catch(error){status(error.message);}};
 $('csvout').onclick=()=>{try{download('publication-batch.csv',D.toCSV(batch),'text/csv;charset=utf-8');status('CSV download requested. Formula prefixes are escaped. JSON remains the simplest backup.');}catch(error){status(error.message);}};
 $('txt').onclick=()=>{download('publication-handoff.txt',D.handoff(batch),'text/plain;charset=utf-8');status('Manual handoff download requested. It lists filenames and unresolved checks; no media is included.');};
-async function restore(file,kind){if(!file)return;try{if(file.size>D.MAX_BYTES)throw Error('Import exceeds 2,000,000 UTF-8 bytes.');const raw=await file.text();const candidate=kind==='csv'?D.fromCSV(raw):D.fromJSON(raw);if(!confirm('Replace the current batch with '+file.name+'? Save your current JSON first if needed.'))return;batch=candidate;dirty=true;render();status('Imported '+file.name+'. Review the checks and save a JSON backup.');}catch(err){status('Import failed; current batch kept. '+err.message);}}
-$('restore').onchange=async e=>{await restore(e.target.files[0],'json');e.target.value='';};$('csvin').onchange=async e=>{await restore(e.target.files[0],'csv');e.target.value='';};
+async function restore(file,kind,input){const request=++restoreEpoch;if(!file)return;try{if(file.size>D.MAX_BYTES)throw Error('Import exceeds 2,000,000 UTF-8 bytes.');const raw=await file.text();if(request!==restoreEpoch)return;const candidate=kind==='csv'?D.fromCSV(raw):D.fromJSON(raw);if(!confirm('Replace the current batch with '+file.name+'? Save your current JSON first if needed.'))return;batch=candidate;dirty=true;render();status('Imported '+file.name+'. Review the checks and save a JSON backup.');}catch(err){if(request===restoreEpoch)status('Import failed; current batch kept. '+err.message);}finally{if(request===restoreEpoch)input.value='';}}
+$('restore').onchange=e=>restore(e.target.files[0],'json',e.target);$('csvin').onchange=e=>restore(e.target.files[0],'csv',e.target);
 $('addwork').onclick=()=>{if(commit(candidate=>{candidate.works.push({id:stableId('WORK'),title:'',ai:'unknown',rights:'',files:[]});}))render();};
 $('addoffer').onclick=()=>{if(commit(candidate=>{candidate.offers.push({id:stableId('OFFER'),title:'',type:'single',period:'',status:'draft',workIds:[],variants:[]});}))render();};
 $('example').onclick=()=>{if(!confirm('Replace the current batch with the synthetic example?'))return;if(commit(candidate=>{Object.assign(candidate,D.example());})){render();status('Synthetic example loaded. It deliberately includes overlap and missing provenance/files.');}};
